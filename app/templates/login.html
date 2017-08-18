@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="row col-md-12">    
+        <div style="margin-top:50px;" class="col-md-4">                    
+            <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <div class="panel-title">Los Kp's - Socios</div>
+                        <div style="float:right; font-size: 32px; position: relative; top:-30px"><i class="fa fa-address-book" aria-hidden="true"></i>
+                        </div>
+                    </div>     
+                    <div style="padding-top:20px" class="panel-body">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                {% for  category, message in messages %}
+                                    <div class="alert alert-{{ category }} fade in">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Error!</strong>
+                                        <hr class="message-inner-separator">
+                                        <p>{{ message }}</p>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                        <form action="/login" method="POST">
+                            <div style="margin-bottom: 15px" class="input-group">
+                            </div>
+                            <div style="margin-bottom: 15px" class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-hashtag"></i></span>
+                                <input id="_documento" type="text" class="form-control" name="_documento" placeholder="Ingrese su número de cédula" onkeypress="return justNumbers(event)" required autofocus>
+                            </div>
+                            <input type="submit" value="Ingresar" class="btn btn-default btn-block">
+                        </form>   
+                    </div>                     
+                </div>  
+        </div>
+    </div>
+    <script>
+function justNumbers(e)
+        {
+        var keynum = window.event ? window.event.keyCode : e.which;
+        if ((keynum == 8) || (keynum == 46))
+        return true;
+         
+        return /\d/.test(String.fromCharCode(keynum));
+        }
+</script>
+{% endblock %}

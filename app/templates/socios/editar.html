@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="col-md-12">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col col-xs-12">
+              <h1 class="panel-title" style="font-size: 25px;"><i class="fa fa-address-book" aria-hidden="true"></i> Editar socio</h1>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for  category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissable">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                   <p>{{ message }}</p>
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          <form action="{{ url_for('guardarsocio') }}" method="POST">
+            <div class="col-md-12">
+              <input type="text" id="_tipo" name="_tipo" value="E" hidden=> 
+              <input type="text" id="_id" name="_id" value="{{data[0]}}" hidden>
+              <div class="form-group">
+                <label for="_documento">Documento</label>
+                <input type="text" class="form-control" id="_documento" name="_documento" placeholder="Ingrese el documento" value="{{data[1]}}" required autofocus>
+              </div>
+              <div class="form-group">
+                <label for="_nombres">Nombres</label>
+                <input type="text" class="form-control" id="_nombres" name="_nombres" placeholder="Ingrese el nombre del socio" value="{{data[2]}}" required autofocus>
+              </div>
+              <div class="form-group">
+                <label for="_telefono">Teléfono</label>
+                <input type="text" class="form-control" id="_telefono" name="_telefono" placeholder="Ingrese el telefono del socio" value="{{data[3]}}" required autofocus>
+              </div>
+              <div class="form-group">
+                <label for="_clubes">Club</label>
+                <select name="_clubes" id="_clubes" class="selectpicker form-control" autofocus>
+                   {% for r in list %}
+                    {% if data[4] == r[1] %}
+                      <option value="{{r[1]}}" selected="selected" >{{r[1]}}</option>
+                    {% else %}  
+                      <option value="{{r[1]}}" >{{r[1]}}</option>
+                    {% endif %}  
+                  {% endfor %}   
+                </select>
+              </div>
+            </div>
+            <div style="float: right;">
+              <input type="submit" name="" value="Guardar" class="btn btn-primary">
+              <a href="/socios/all" class="btn btn-default"><i class="fa fa-reply" aria-hidden="true"></i></a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+{% endblock %}

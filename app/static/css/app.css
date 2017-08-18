@@ -1,0 +1,50 @@
+body, html {
+    height: 100%;
+    background-repeat: no-repeat;
+    /* background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33)); */
+    background-color: #fff;
+}
+
+footer {
+	text-align: center;
+}
+
+.navbar-custom {
+    color: #000;
+    background-color: #fff;
+}
+
+.navbar {
+  top:0;
+  left:0;
+  width:100%;
+  border-radius: 0px;
+/*  box-shadow: 2px 2px 2px #888888;*/
+  box-shadow: 2px 2px 2px #888888;
+
+}
+.navbar-default {
+    background-color: #fff;
+    border: none;
+      margin-bottom:50px;
+}
+
+.navbar-primary {
+    background-color: #fff;
+    border: none;
+}
+
+
+.panel {
+  margin-top: 70px;
+}
+
+.entry:not(:first-of-type)
+{
+    margin-top: 10px;
+}
+
+.glyphicon
+{
+    font-size: 12px;
+}
